@@ -1,0 +1,10 @@
+*.tar.bz2
+*.tgz
+*.tar.gz
+*.tar.xz
+*.tar.xz.sig
+*.zip
+*.run
+*.tar.bz2?rev=*
+pkg/
+src/

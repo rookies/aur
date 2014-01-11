@@ -1,0 +1,40 @@
+# Maintainer: Robert Knauer <robert@privatdemail.net>
+# Contributor: Elena ``of Valhalla'' Grandi <elena.valhalla@gmail.com>
+
+pkgname=pdfposter
+pkgver=0.6.0dev
+pkgrel=3
+pkgdesc="Print large posters on multiple sheets"
+arch=('any')
+url="https://build.opensuse.org/package/show?package=pdfposter&project=devel%3Alanguages%3Apython"
+license=('GPL3')
+depends=('python2-pypdf')
+makedepends=('python2-distribute')
+options=(!emptydirs)
+source=(
+  "https://api.opensuse.org/public/source/devel:languages:python/pdfposter/pdftools.pdfposter-0.6.0dev.tar.bz2?rev=1a02fd580a064630ad9db68e3eb25903"
+  'xy_offset.patch'
+  'overlap_option.patch'
+  'notrim_option.patch'
+)
+sha256sums=(
+  '76a85bc108ed57be3a012ed479e20de7a76a247cc842ebbcd8fec5de9b7b13f6'
+  '7208ad28128872cd6d5f84a5e72ab1bb4714ab576a57af423f82f8f6ddf53db4'
+  '2800fcac201b7e2ac6984d581deb0b5e66721b786e625808f4a66e9bbe856802'
+  '679236f7788005861475653b738c1bca326d3a5a19ccaef6faa98d31ac3b9a13'
+)
+
+build() {
+  cd "${srcdir}/pdftools.pdfposter-${pkgver}"
+  msg "Patching files with notrim_option.patch ..."
+  patch -p1 < "${srcdir}/notrim_option.patch"
+  msg "Patching files with overlap_option.patch ..."
+  patch -p1 < "${srcdir}/overlap_option.patch"
+  msg "Patching files with xy_offset.patch ..."
+  patch -p0 < "${srcdir}/xy_offset.patch"
+}
+
+package() {
+  cd "${srcdir}/pdftools.pdfposter-${pkgver}"
+  python2 setup.py install --root="${pkgdir}" --optimize=1
+}

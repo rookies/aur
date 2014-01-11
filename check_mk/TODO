@@ -1,0 +1,3 @@
+etc/check_mk/conf.d/README
+usr/share/check_mk/agents/waitmax.c
+usr/share/check_mk/agents/Makefile
