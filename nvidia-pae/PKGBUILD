@@ -43,6 +43,7 @@ fi
 
 prepare() {
   cd "${srcdir}"
+  rm -rf "${_pkg}"
   sh "${_pkg}.run" --extract-only
   cd "${_pkg}"
   patch -p1 -i "${srcdir}/nvidia_3.13_kernel.patch"
