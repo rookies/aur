@@ -19,7 +19,7 @@ sha256sums=(
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  ./configure --prefix=/usr
+  PYTHON=/usr/bin/python2 ./configure --prefix=/usr
   make
 }
 
