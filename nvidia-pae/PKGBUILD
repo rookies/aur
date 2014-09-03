@@ -3,7 +3,7 @@
 
 pkgname=nvidia-pae
 pkgver=340.32
-_extramodules=extramodules-3.15-pae
+_extramodules=extramodules-3.16-pae
 pkgrel=2
 pkgdesc="NVIDIA drivers for linux-pae"
 arch=('i686' 'x86_64')
